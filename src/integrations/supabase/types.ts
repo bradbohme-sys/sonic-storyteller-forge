@@ -77,6 +77,245 @@ export type Database = {
           },
         ]
       }
+      audio_clips: {
+        Row: {
+          audio_url: string
+          clip_name: string
+          clip_type: string
+          created_at: string
+          duration: number
+          end_time: number
+          fade_in: number | null
+          fade_out: number | null
+          generation_model: string | null
+          generation_prompt: string | null
+          id: string
+          metadata: Json | null
+          pitch: number | null
+          speed: number | null
+          start_time: number
+          track_id: string
+          updated_at: string
+          user_id: string
+          voice_profile_id: string | null
+          volume: number | null
+          waveform_data: Json | null
+        }
+        Insert: {
+          audio_url: string
+          clip_name: string
+          clip_type: string
+          created_at?: string
+          duration: number
+          end_time: number
+          fade_in?: number | null
+          fade_out?: number | null
+          generation_model?: string | null
+          generation_prompt?: string | null
+          id?: string
+          metadata?: Json | null
+          pitch?: number | null
+          speed?: number | null
+          start_time?: number
+          track_id: string
+          updated_at?: string
+          user_id: string
+          voice_profile_id?: string | null
+          volume?: number | null
+          waveform_data?: Json | null
+        }
+        Update: {
+          audio_url?: string
+          clip_name?: string
+          clip_type?: string
+          created_at?: string
+          duration?: number
+          end_time?: number
+          fade_in?: number | null
+          fade_out?: number | null
+          generation_model?: string | null
+          generation_prompt?: string | null
+          id?: string
+          metadata?: Json | null
+          pitch?: number | null
+          speed?: number | null
+          start_time?: number
+          track_id?: string
+          updated_at?: string
+          user_id?: string
+          voice_profile_id?: string | null
+          volume?: number | null
+          waveform_data?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_audio_clips_track"
+            columns: ["track_id"]
+            isOneToOne: false
+            referencedRelation: "audio_tracks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_audio_clips_voice_profile"
+            columns: ["voice_profile_id"]
+            isOneToOne: false
+            referencedRelation: "voice_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audio_processing_jobs: {
+        Row: {
+          completed_at: string | null
+          cost_credits: number | null
+          created_at: string
+          error_message: string | null
+          id: string
+          input_data: Json
+          job_type: string
+          output_data: Json | null
+          processing_time_seconds: number | null
+          progress: number | null
+          status: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          cost_credits?: number | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          input_data: Json
+          job_type: string
+          output_data?: Json | null
+          processing_time_seconds?: number | null
+          progress?: number | null
+          status?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          cost_credits?: number | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          input_data?: Json
+          job_type?: string
+          output_data?: Json | null
+          processing_time_seconds?: number | null
+          progress?: number | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      audio_projects: {
+        Row: {
+          bpm: number | null
+          created_at: string
+          description: string | null
+          duration_seconds: number | null
+          id: string
+          key_signature: string | null
+          metadata: Json | null
+          status: string | null
+          time_signature: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bpm?: number | null
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          key_signature?: string | null
+          metadata?: Json | null
+          status?: string | null
+          time_signature?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          bpm?: number | null
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          key_signature?: string | null
+          metadata?: Json | null
+          status?: string | null
+          time_signature?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      audio_tracks: {
+        Row: {
+          color: string | null
+          created_at: string
+          effects: Json | null
+          id: string
+          is_locked: boolean | null
+          is_muted: boolean | null
+          is_soloed: boolean | null
+          pan: number | null
+          project_id: string
+          track_index: number
+          track_name: string
+          track_type: string
+          updated_at: string
+          volume: number | null
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          effects?: Json | null
+          id?: string
+          is_locked?: boolean | null
+          is_muted?: boolean | null
+          is_soloed?: boolean | null
+          pan?: number | null
+          project_id: string
+          track_index: number
+          track_name: string
+          track_type: string
+          updated_at?: string
+          volume?: number | null
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          effects?: Json | null
+          id?: string
+          is_locked?: boolean | null
+          is_muted?: boolean | null
+          is_soloed?: boolean | null
+          pan?: number | null
+          project_id?: string
+          track_index?: number
+          track_name?: string
+          track_type?: string
+          updated_at?: string
+          volume?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_audio_tracks_project"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "audio_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       media_assets: {
         Row: {
           ai_generated: boolean | null
@@ -142,6 +381,66 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      music_compositions: {
+        Row: {
+          adaptive_parameters: Json | null
+          audio_url: string | null
+          bpm: number | null
+          created_at: string
+          download_count: number | null
+          duration_seconds: number | null
+          generation_prompt: string
+          genre: string | null
+          id: string
+          instruments: Json | null
+          key_signature: string | null
+          leitmotifs: Json | null
+          mood: string | null
+          quality_score: number | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          adaptive_parameters?: Json | null
+          audio_url?: string | null
+          bpm?: number | null
+          created_at?: string
+          download_count?: number | null
+          duration_seconds?: number | null
+          generation_prompt: string
+          genre?: string | null
+          id?: string
+          instruments?: Json | null
+          key_signature?: string | null
+          leitmotifs?: Json | null
+          mood?: string | null
+          quality_score?: number | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          adaptive_parameters?: Json | null
+          audio_url?: string | null
+          bpm?: number | null
+          created_at?: string
+          download_count?: number | null
+          duration_seconds?: number | null
+          generation_prompt?: string
+          genre?: string | null
+          id?: string
+          instruments?: Json | null
+          key_signature?: string | null
+          leitmotifs?: Json | null
+          mood?: string | null
+          quality_score?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -234,6 +533,66 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      sound_effects: {
+        Row: {
+          audio_url: string
+          category: string
+          created_at: string
+          duration_seconds: number
+          effect_name: string
+          frequency_range: string | null
+          generation_model: string | null
+          generation_prompt: string | null
+          id: string
+          is_loopable: boolean | null
+          quality_rating: number | null
+          subcategory: string | null
+          tags: string[] | null
+          updated_at: string
+          usage_count: number | null
+          user_id: string
+          volume_normalization: number | null
+        }
+        Insert: {
+          audio_url: string
+          category: string
+          created_at?: string
+          duration_seconds: number
+          effect_name: string
+          frequency_range?: string | null
+          generation_model?: string | null
+          generation_prompt?: string | null
+          id?: string
+          is_loopable?: boolean | null
+          quality_rating?: number | null
+          subcategory?: string | null
+          tags?: string[] | null
+          updated_at?: string
+          usage_count?: number | null
+          user_id: string
+          volume_normalization?: number | null
+        }
+        Update: {
+          audio_url?: string
+          category?: string
+          created_at?: string
+          duration_seconds?: number
+          effect_name?: string
+          frequency_range?: string | null
+          generation_model?: string | null
+          generation_prompt?: string | null
+          id?: string
+          is_loopable?: boolean | null
+          quality_rating?: number | null
+          subcategory?: string | null
+          tags?: string[] | null
+          updated_at?: string
+          usage_count?: number | null
+          user_id?: string
+          volume_normalization?: number | null
+        }
+        Relationships: []
       }
       timeline_clips: {
         Row: {
@@ -338,6 +697,51 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      voice_profiles: {
+        Row: {
+          character_name: string
+          created_at: string
+          emotional_variants: Json | null
+          id: string
+          is_cloned: boolean | null
+          quality_score: number | null
+          sample_text: string | null
+          updated_at: string
+          usage_count: number | null
+          user_id: string
+          voice_id: string | null
+          voice_settings: Json | null
+        }
+        Insert: {
+          character_name: string
+          created_at?: string
+          emotional_variants?: Json | null
+          id?: string
+          is_cloned?: boolean | null
+          quality_score?: number | null
+          sample_text?: string | null
+          updated_at?: string
+          usage_count?: number | null
+          user_id: string
+          voice_id?: string | null
+          voice_settings?: Json | null
+        }
+        Update: {
+          character_name?: string
+          created_at?: string
+          emotional_variants?: Json | null
+          id?: string
+          is_cloned?: boolean | null
+          quality_score?: number | null
+          sample_text?: string | null
+          updated_at?: string
+          usage_count?: number | null
+          user_id?: string
+          voice_id?: string | null
+          voice_settings?: Json | null
+        }
+        Relationships: []
       }
     }
     Views: {
