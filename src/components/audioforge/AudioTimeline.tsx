@@ -165,7 +165,7 @@ export function AudioTimeline() {
                             width: `${100 + clipIndex * 20}px`
                           }}
                         >
-                          <Waveform className="w-4 h-4 text-white" />
+                          <AudioWaveform className="w-4 h-4 text-white" />
                         </div>
                       ))}
                     </div>

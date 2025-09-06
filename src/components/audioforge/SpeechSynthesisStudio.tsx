@@ -359,7 +359,7 @@ export function SpeechSynthesisStudio() {
 
                   <div className="bg-waveform-background rounded-lg p-4 border">
                     <div className="flex items-center justify-center space-x-2 text-waveform-primary">
-                      <Waveform className="w-5 h-5 animate-audio-pulse" />
+                      <AudioWaveform className="w-5 h-5 animate-audio-pulse" />
                       <span className="text-sm">Audio ready for playback</span>
                     </div>
                   </div>
@@ -375,7 +375,7 @@ export function SpeechSynthesisStudio() {
                 </div>
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
-                  <Waveform className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <AudioWaveform className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p>Generate speech to preview audio</p>
                 </div>
               )}

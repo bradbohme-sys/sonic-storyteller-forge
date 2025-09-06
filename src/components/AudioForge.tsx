@@ -63,7 +63,7 @@ export function AudioForge({ className }: AudioForgeProps) {
       id: 'timeline',
       title: 'Audio Timeline',
       description: 'Multi-track editing & synchronization',
-      icon: Waveform,
+      icon: AudioWaveform,
       color: 'from-orange-500 to-red-500',
       component: AudioTimeline
     },
