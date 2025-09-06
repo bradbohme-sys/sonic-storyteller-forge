@@ -109,7 +109,7 @@ export function AudioForge({ className }: AudioForgeProps) {
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-audio-glow">AudioForge</h1>
-                  <p className="text-sm text-muted-foreground">Revolutionary AI Audio Production</p>
+                  <p className="text-sm text-muted-foreground">Revolutionary AI Audio Production Studio</p>
                 </div>
               </div>
             </div>
