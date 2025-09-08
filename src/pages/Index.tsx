@@ -1,9 +1,9 @@
-import { AudioForge } from '@/components/AudioForge';
+import AudioPage from './AudioPage';
 
 const Index = () => {
   return (
     <div className="dark">
-      <AudioForge />
+      <AudioPage />
     </div>
   );
 };
